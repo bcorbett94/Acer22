@@ -1,4 +1,4 @@
-#Host/Symbiont qPCR data Code
+#Host/Symbiont qPCR data Code comparing which primers between CAM & Pax 
 library(steponeR)
 library(tidyverse)
 library(dplyr)
