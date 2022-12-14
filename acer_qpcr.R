@@ -20,7 +20,10 @@ acer<-acer %>%
   filter(!Sample.Name == "neg", !Sample.Name == "pos", !Sample.Name == "NEC6")%>%
   filter(!Sample.Name == "277", !Sample.Name == "279")
 
-#converts numeric timepoint in master sheet to character in order to combine them across the qpcr data
+#convets numeric timepoint in master sheet to character in order to combine them across the qpcr data
 master<-master%>%mutate_if(is.numeric,as.character)%>%
     full_join(acer)
+    #select(master,Sample.Name,TimePoint,Cam.CT.mean,Sym.CT.mean,Sym.Cam,Sym.CT.sd,Cam.CT.sd)
+test<-select(master,Sample.Name,TimePoint,Cam.CT.mean,Sym.CT.mean,Sym.Cam,Sym.CT.sd,Cam.CT.sd )
+
     
