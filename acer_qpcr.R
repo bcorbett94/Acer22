@@ -5,7 +5,8 @@ library(ggplot2)
 library(lubridate)
 p2 <- list.files(path = "qPCR", pattern = ".txt", full.names = TRUE)
 p2
-
+p2<-p2[-1]
+p2
 master<-read.csv(header = TRUE, file ="acer_master.csv")
 
 df <- steponeR(files = p2, 
@@ -14,7 +15,8 @@ df <- steponeR(files = p2,
               fluor.norm = list(Cam = 0, Sym = 0), 
               ploidy = list(Cam = 2, Sym = 1),
               extract = list(Cam = .982, Sym = .813),
-              copy.number = list(Cam = 1, Sym = 1) )
+              copy.number = list(Cam = 1, Sym = 1))
+
 acer <- df$result
 
 acer<-acer %>%
@@ -32,6 +34,27 @@ final<-transform(final, TimePoint = as.numeric(TimePoint)) #converts Timpoint wh
 master<-master %>%
   mutate(Date = as_date(Date,format = "%m/%e/%y"))
 
+ggplot(master, aes(x = Cam.CT.mean, y = Sample.Name,))+
+  geom_histogram()
+#NEC 9 
+batch<-master%>%
+  filter(File.Name == "Acer_1.12-2.txt")
+
+batch9<- master%>%
+  filter(File.Name == "Acer_01.18.txt")%>%
+  full_join(batch)
+
+#histogram for Cam NEC 9 
+ggplot(batch9, aes(x = Cam.CT.mean))+
+  geom_histogram()
+
+#histogram for Sym NEC9   
+ggplot(batch9, aes(x = Sym.CT.mean))+
+  geom_histogram()
+
+#histogram for NEC 8
+batch8<-master%>%
+  filter(File.Name == "Acer_1.11_edit.txt")
 
 
 ggplot(master, aes(x = Date, y = log10(Sym.Cam), color = Treatment, group = interaction(Date,Treatment)))+
@@ -39,3 +62,4 @@ ggplot(master, aes(x = Date, y = log10(Sym.Cam), color = Treatment, group = inte
   geom_violin()
 
 str(master)
+
