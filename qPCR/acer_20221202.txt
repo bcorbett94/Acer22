@@ -1,0 +1,141 @@
+* Block Type = 96-Well 0.2-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 06-24-2022
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 06-24-2022
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 06-24-2022
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 06-24-2022
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 06-24-2022
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 06-24-2022
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 06-24-2022
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 06-24-2022
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 06-24-2022
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 06-24-2022
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 06-24-2022
+* Chemistry = SYBR_GREEN
+* Date Created = 2023-01-24 14:55:36 PM CST
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = C:\Users\bcorbett\OneDrive - Shedd Aquarium Society\Acropora22_proj\EDS files\acer_20221202.eds
+* Experiment Name = Quantification-SYBR_with_Melt
+* Experiment Run End Time = 2022-12-02 12:56:15 PM CST
+* Experiment Type = Standard Curve
+* Instrument Name =       272320406
+* Instrument Serial Number = 272320406
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step3
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	Tm1	Tm2	Tm3	Tm4
+1	A1	false	302	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+2	A2	false	302	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+3	A3	false	302	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+4	A4	false	302	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+5	A5	false	3	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+6	A6	false	3	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+7	A7	false	3	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+8	A8	false	3	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+9	A9	false	113	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+10	A10	false	113	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+11	A11	false	113	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+12	A12	false	113	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+13	B1	false	183	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+14	B2	false	183	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+15	B3	false	183	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+16	B4	false	183	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+17	B5	false	4	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+18	B6	false	4	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+19	B7	false	4	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+20	B8	false	4	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+21	B9	false	114	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+22	B10	false	114	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+23	B11	false	114	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+24	B12	false	114	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+25	C1	false	184	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+26	C2	false	184	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+27	C3	false	184	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+28	C4	false	184	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+29	C5	false	5	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+30	C6	false	5	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+31	C7	false	5	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+32	C8	false	5	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+33	C9	false	115	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+34	C10	false	115	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+35	C11	false	115	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+36	C12	false	115	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+37	D1	false	294	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+38	D2	false	294	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+39	D3	false	294	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+40	D4	false	294	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+41	D5	false	6	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+42	D6	false	6	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+43	D7	false	6	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+44	D8	false	6	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+45	D9	false	116	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+46	D10	false	116	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+47	D11	false	116	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+48	D12	false	116	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+49	E1	false	187	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+50	E2	false	187	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+51	E3	false	187	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+52	E4	false	187	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+53	E5	false	7	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+54	E6	false	7	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+55	E7	false	7	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+56	E8	false	7	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+57	E9	false	117	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+58	E10	false	117	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+59	E11	false	117	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+60	E12	false	117	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+61	F1	false	188	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+62	F2	false	188	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+63	F3	false	188	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+64	F4	false	188	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+65	F5	false	8	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+66	F6	false	8	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+67	F7	false	8	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+68	F8	false	8	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+69	F9	false	118	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+70	F10	false	118	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+71	F11	false	118	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+72	F12	false	118	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+73	G1	false	1	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+74	G2	false	1	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+75	G3	false	1	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+76	G4	false	1	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+77	G5	false	9	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+78	G6	false	9	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+79	G7	false	9	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+80	G8	false	9	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+81	G9	false	pos	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+82	G10	false	pos	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+83	G11	false	pos	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+84	G12	false	pos	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+85	H1	false	2	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+86	H2	false	2	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+87	H3	false	2	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+88	H4	false	2	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+89	H5	false	112	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+90	H6	false	112	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+91	H7	false	112	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+92	H8	false	112	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+93	H9	false	neg	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+94	H10	false	neg	CAM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+95	H11	false	neg	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
+96	H12	false	neg	SYM	UNKNOWN	SYBR	None											true	0.200	true	3	15	N/A						
