@@ -22,10 +22,10 @@
 * Calibration Uniformity is expired  = No
 * Calibration Uniformity performed on = 06-24-2022
 * Chemistry = SYBR_GREEN
-* Date Created = 2023-01-25 16:16:02 PM CST
+* Date Created = 2023-01-26 12:51:03 PM CST
 * Experiment Barcode = NA
 * Experiment Comment = NA
-* Experiment File Name = C:\Users\bcorbett\OneDrive - Shedd Aquarium Society\Acropora22_proj\EDS files\acer_20230125.eds
+* Experiment File Name = C:\Users\bcorbett\Downloads\acer_20230125.eds
 * Experiment Name = Quantification-SYBR_with_Melt
 * Experiment Run End Time = 2023-01-25 12:30:59 PM CST
 * Experiment Type = Standard Curve
