@@ -21,7 +21,7 @@ mlt<-mlt%>%
     Sample.Name = Sample
   )
 
-#if I wantto look at individiual samples with each Ct, merge melting temps here? 
+
 
 master<-read.csv(header = TRUE, file ="acer_master.csv")
 
@@ -32,40 +32,82 @@ df <- steponeR(files = p2,
               ploidy = list(CAM = 2, SYM = 1),
               extract = list(CAM = .982, SYM = .813),
               copy.number = list(CAM = 1, SYM = 1))
-
 acer <- df$result
+
 #Below code removes melt after and before the melt text files in order to combine dframes
-mlt$File.Name<-gsub("_melt","",as.character(mlt$File.Name))#removes "melt" from end of files
+mlt$File.Name<-gsub("_melt","",as.character(mlt$File.Name))
 mlt$File.Name<-gsub("melt/","", as.character(mlt$File.Name))
-meltTemp<-select(mlt, File.Name, Well, Sample.Name,Tm )
+
+meltTemp<-select(mlt, Filename = File.Name , Well, Sample.Name,Tm)
+
+df$result<-rename(df$result,Filename = File.Name)
+
 #combines the SYM and CAM averages
-meltTemp<-meltTemp%>%full_join(acer)
-
-#acer<-acer %>%
-#  filter(!Sample.Name== "positive",!Sample.Name == "negative") %>%
-  #filter(!Sample.Name == "neg", !Sample.Name == "pos", !Sample.Name == "NEC6")%>%
- # filter(!Sample.Name == "277", !Sample.Name == "279")
-#nrow(acer)
-
-#did negative template control amplify(should go back and make all negatives the same name)
-neg<- meltTemp %>%
-  filter(Sample.Name == "neg")
-negative<- meltTemp %>%
-  filter(Sample.Name == "negative")%>%
-  full_join(neg)
-rm(neg)
+mTemp<-meltTemp%>%
+  full_join(df$unknowns, by = c("Well","Filename","Sample.Name"))%>%
+  full_join(df$result, by = c("Filename","Sample.Name"))
 
 #Are there two values, if not, filter out
-repT<-filter(negative, SYM.reps == 2 |CAM.reps == 2)# only two samples 
+#did negative template control amplify
+
+negN<-filter(mTemp,str_detect(Sample.Name, 'neg'))%>% 
+  filter(SYM.reps == 2 & CAM.reps == 2)#If negatives comeback with both samples amplifying with target temp,remove
+
+mTemp<-filter(mTemp, !str_detect(Filename, '1214'))%>%#removes 1214 because negatives had amplification
+  filter(!str_detect(Sample.Name, 'pos'))
+
+#ugly way to remove the lower case versions of these columns, was throwing off the code
+mTemp$Cam.CT.mean<-NULL
+mTemp$Sym.CT.mean<-NULL
+mTemp$Sym.reps<-NULL
+mTemp$Cam.reps<-NULL
+mTemp$Sym.CT.sd<-NULL
+
+rerunSamples<-filter(mTemp, SYM.reps != 2 | CAM.reps != 2)%>% #samples that did not work 
+  filter(!str_detect(Sample.Name, 'neg|NEC|pos'))
+
+mTemp<-filter(mTemp,SYM.reps ==2 & CAM.reps ==2)#Getting rid of Samples that did not have both wells work
+
+remove(meltTemp)#Removes meltTemp after its not needed downstream
+
+#separates CAM and SYM data based on target to identify thresholds
+cBatch<-mTemp%>%
+  filter(Target.Name == "CAM")
+
+sBatch<-mTemp%>%
+  filter(Target.Name == "SYM")
+ 
+NECs<-filter(sBatch, str_detect(Sample.Name, 'NEC'))%>%
+  filter(SYM.reps == 2)%>%
+  filter(87.2>Tm | Tm> 88.293)
+
+NECc<-filter(cBatch,str_detect(Sample.Name, 'NEC'))%>%
+    filter(CAM.reps == 2)%>%
+    filter(74.344>Tm | Tm>75.384)#Range for CAM target
+
+# Checking how far the NEC with CT's are from the other samples based on target type
+cmean<-mean(cBatch$CAM.CT.mean)
+
+smean<-mean(sBatch$SYM.CT.mean)
+
+NECc<-NECc%>%
+  mutate(checkCAM = CT - cmean)
+NECF<-NECs%>%
+  mutate(checkSYM = CT-smean)%>%
+  full_join(NECc)
+checkk<-NECF%>%
+  filter(checkSYM<8 | checkCAM<8)
+
+mTemp<-mTemp%>%
+  full_join(checkk)#Joins the NECs that had lower than 8 cycle difference 
 
 
-#test<-filter(negative,is.na(CAM.CT.mean))
-
-
-
-#convets numeric timepoint in master sheet to character in order to combine them across the qpcr data
+#converts numeric timepoint in master sheet to character in order to combine them across the qpcr data
 master<-master%>%mutate_if(is.numeric,as.character)%>%
     full_join(acer)
+
+mTemp<-mTemp%>%
+  filter(!Tm<74 & !Tm>89)# Removes non target temperatures
 
 #select(master,Sample.Name,TimePoint,Cam.CT.mean,Sym.CT.mean,Sym.Cam,Sym.CT.sd,Cam.CT.sd)
 final<-select(master,Sample.Name,TimePoint,CAM.CT.mean,SYM.CT.mean,SYM.CAM,SYM.CT.sd,CAM.CT.sd)
@@ -74,10 +116,19 @@ final<-transform(final, TimePoint = as.numeric(TimePoint)) #converts Timpoint wh
 master<-master %>%
   mutate(Date = as_date(Date,format = "%m/%e/%y"))
 
+#Histograms separating CAM and SYM targets based on thresholds checked against QuantStudios
+ggplot(cBatch, aes(Tm, fill = str_detect(Sample.Name, pattern ="NEC")))+
+  geom_histogram(binwidth = .1)+
+  coord_cartesian(xlim = c(72,77))+
+  geom_vline(xintercept= c(74.34,75.45))#threshold for CAM target
+  
+ggplot(sBatch, aes(Tm, fill = str_detect(Sample.Name, pattern ="NEC")))+
+  geom_histogram (binwidth = .1)+
+  coord_cartesian(xlim = c(84.5,90))+
+  geom_vline(xintercept = c(87.2,88.35))#threshold for SYM target
 
 
-
-
+#Histograms for Extraction control batches to determine if rerunning is neccesary
 #NEC 9 
 batch<-master%>%
   filter(File.Name == "Acer_1.12-2.txt")
@@ -87,13 +138,13 @@ batch9<- master%>%
   full_join(batch)
 
 #histogram for Cam NEC 9 
-ggplot(batch9, aes(x = Cam.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(batch9, aes(x = CAM<.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
   geom_histogram()+
   scale_x_continuous(breaks = 17:40)
   
 
 #histogram for Sym NEC9   
-ggplot(batch9, aes(x = Sym.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(batch9, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
   geom_histogram()
 
 #histogram for NEC 8
@@ -103,13 +154,12 @@ batch8<-master%>%
   filter(File.Name == "Acer_1.11_edit.txt")%>%
   full_join(batchq)
 
-ggplot(batch8, aes(x = Cam.CT.mean,fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(batch8, aes(x = CAM.CT.mean,fill = str_detect(Sample.Name, pattern = "NEC")))+
   geom_histogram()
-ggplot(batch8, aes(x = Sym.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(batch8, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
   geom_histogram()
 
-ggplot(master, aes(x = Date, y = log10(Sym.Cam), color = Treatment, group = interaction(Date,Treatment)))+
-  geom_point()+
+ggplot(master, aes(x = Date, y = log10(SYM.CAM), color = Treatment, group = interaction(Date,Treatment)))+
   geom_violin()
 
 str(master)
