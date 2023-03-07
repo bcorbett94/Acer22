@@ -1,0 +1,139 @@
+* Block Type = 96-Well 0.2-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 06-24-2022
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 06-24-2022
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 06-24-2022
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 06-24-2022
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 06-24-2022
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 06-24-2022
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 06-24-2022
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 06-24-2022
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 06-24-2022
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 06-24-2022
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 06-24-2022
+* Chemistry = SYBR_GREEN
+* Date Created = 2023-02-15 14:12:54 PM CST
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = C:\Users\bcorbett\OneDrive - Shedd Aquarium Society\Acropora22_proj\EDS files\acer_20230215_1.eds
+* Experiment Name = Quantification-SYBR_with_Melt
+* Experiment Run End Time = Not Started
+* Experiment Type = Standard Curve
+* Instrument Name =       272320406
+* Instrument Serial Number = 272320406
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Melt Curve Result]
+Well	Well Position	Sample	Target Name	Tm	Melt Peak Height
+1	A1	3	CAM	75.372	93,965.883
+2	A2	3	CAM	75.372	82,500.844
+3	A3	3	SYM	87.905	72,217.938
+4	A4	3	SYM	88.058	65,330.555
+5	A5	108	CAM	75.363	93,893.766
+6	A6	108	CAM	75.363	99,109.320
+7	A7	108	SYM	88.004	73,010.562
+8	A8	108	SYM	88.309	56,885.996
+8	A8	108	SYM	67.909	15,237.891
+9	A9	387	CAM	75.405	100,309.875
+10	A10	387	CAM	75.405	102,094.188
+11	A11	387	SYM	87.720	80,697.281
+12	A12	387	SYM	87.720	83,704.281
+13	B1	19	CAM	75.372	87,234.180
+14	B2	19	CAM	75.372	86,396.250
+15	B3	19	SYM	87.905	68,689.125
+16	B4	19	SYM	87.905	58,435.957
+17	B5	143	CAM	75.363	85,991.875
+18	B6	143	CAM	75.363	91,004.523
+19	B7	143	SYM	87.852	70,043.391
+20	B8	143	SYM	87.852	68,684.992
+21	B9	366	CAM	75.405	92,074.016
+22	B10	366	CAM	75.405	82,805.461
+23	B11	366	SYM	87.720	73,143.836
+24	B12	366	SYM	87.720	67,410.352
+25	C1	37	CAM	75.220	85,992.617
+26	C2	37	CAM	75.220	93,649.312
+27	C3	37	SYM	87.905	61,701.496
+28	C4	37	SYM	87.753	61,842.773
+29	C5	159	CAM	75.363	77,151.422
+30	C6	159	CAM	75.363	91,484.758
+31	C7	159	SYM	87.852	63,113.938
+32	C8	159	SYM	87.700	65,306.285
+33	C9	384	CAM	75.252	104,909.055
+34	C10	384	CAM	75.405	97,482.641
+35	C11	384	SYM	87.720	65,721.344
+36	C12	384	SYM	87.720	64,631.719
+37	D1	42	CAM	75.220	92,926.297
+38	D2	42	CAM	75.372	92,332.609
+39	D3	42	SYM	87.753	72,734.719
+40	D4	42	SYM	87.753	65,558.906
+41	D5	160	CAM	75.363	82,920.914
+42	D6	160	CAM	75.363	83,056.047
+43	D7	160	SYM	87.700	68,341.859
+44	D8	160	SYM	87.700	75,195.602
+45	D9	315	CAM	75.099	72,777.766
+46	D10	315	CAM	75.099	71,292.531
+47	D11	315	SYM	87.720	66,205.078
+48	D12	315	SYM	87.720	61,248.984
+49	E1	43	CAM	75.220	88,802.016
+50	E2	43	CAM	75.220	100,388.586
+51	E3	43	SYM	87.753	56,489.074
+52	E4	43	SYM	87.753	67,188.234
+53	E5	286	CAM	75.211	91,707.383
+54	E6	286	CAM	75.211	89,906.836
+55	E7	286	SYM	87.700	62,255.246
+56	E8	286	SYM	87.700	67,166.625
+57	E9	297	CAM	75.252	100,309.328
+58	E10	297	CAM	75.252	103,339.875
+59	E11	297	SYM	87.720	67,523.586
+60	E12	297	SYM	87.720	69,892.812
+61	F1	51	CAM	75.220	89,992.805
+62	F2	51	CAM	75.220	82,580.180
+63	F3	51	SYM	87.753	65,349.113
+64	F4	51	SYM	87.753	73,191.383
+65	F5	375	CAM	59.992	1,599.068
+66	F6	375	CAM	75.059	60,013.934
+67	F7	375	SYM	87.700	66,910.859
+68	F8	375	SYM	87.700	61,781.039
+69	F9	NEC 11	CAM	81.813	27,300.293
+70	F10	NEC 11	CAM	81.203	35,320.734
+71	F11	NEC 11	SYM	87.720	3,193.407
+71	F11	NEC 11	SYM	63.498	4,368.658
+72	F12	NEC 11	SYM	83.150	23,090.184
+73	G1	53	CAM	75.220	109,179.516
+74	G2	53	CAM	75.220	91,149.750
+75	G3	53	SYM	87.753	67,797.125
+76	G4	53	SYM	87.753	67,700.859
+77	G5	388	CAM	75.211	73,722.297
+78	G6	388	CAM	75.211	101,246.867
+79	G7	388	SYM	87.700	69,785.016
+80	G8	388	SYM	87.700	72,519.625
+81	G9	pos	CAM	75.099	77,844.844
+82	G10	pos	CAM	75.099	90,491.633
+83	G11	pos	SYM	87.568	68,110.344
+84	G12	pos	SYM	87.568	80,338.188
+85	H1	100	CAM	75.068	98,883.164
+86	H2	100	CAM	75.068	97,302.461
+87	H3	100	SYM	87.753	65,232.977
+88	H4	100	SYM	87.905	68,338.117
+93	H9	neg	CAM	74.794	2,804.018
+94	H10	neg	CAM	74.947	12,690.353
+95	H11	neg	SYM	61.061	2,060.750
+96	H12	neg	SYM	76.143	19,625.094

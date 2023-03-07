@@ -1,6 +1,8 @@
 library(steponeR)
+install.packages("plotly")
 library(tidyverse)
 library(dplyr)
+library(plotly)
 library(data.table)
 library(ggplot2)
 library(lubridate)
@@ -20,8 +22,6 @@ mlt<-mlt%>%
   rename(
     Sample.Name = Sample
   )
-
-
 
 master<-read.csv(header = TRUE, file ="acer_master.csv")
 
@@ -47,11 +47,12 @@ mTemp<-meltTemp%>%
   full_join(df$unknowns, by = c("Well","Filename","Sample.Name"))%>%
   full_join(df$result, by = c("Filename","Sample.Name"))
 
+
 #Are there two values, if not, filter out
 #did negative template control amplify
 
 negN<-filter(mTemp,str_detect(Sample.Name, 'neg'))%>% 
-  filter(SYM.reps == 2 & CAM.reps == 2)#If negatives comeback with both samples amplifying with target temp,remove
+  filter(SYM.reps == 2 | CAM.reps == 2)#If negatives comeback with both samples amplifying with target temp,remove
 
 mTemp<-filter(mTemp, !str_detect(Filename, '1214'))%>%#removes 1214 because negatives had amplification
   filter(!str_detect(Sample.Name, 'pos'))
@@ -62,13 +63,27 @@ mTemp$Sym.CT.mean<-NULL
 mTemp$Sym.reps<-NULL
 mTemp$Cam.reps<-NULL
 mTemp$Sym.CT.sd<-NULL
+mTemp$Cam.CT.sd<-NULL
 
 rerunSamples<-filter(mTemp, SYM.reps != 2 | CAM.reps != 2)%>% #samples that did not work 
   filter(!str_detect(Sample.Name, 'neg|NEC|pos'))
 
-mTemp<-filter(mTemp,SYM.reps ==2 & CAM.reps ==2)#Getting rid of Samples that did not have both wells work
+rerunDupes<-rerunSamples%>%
+  count(Sample.Name) %>%
+  filter(n>=2)
+rerunDupes
 
-remove(meltTemp)#Removes meltTemp after its not needed downstream
+
+
+batch11<-mTemp%>%
+  filter(Filename == "acer_20230215_1.txt")
+
+mTemp<-filter(mTemp,SYM.reps ==2 & CAM.reps ==2)#Dataframe with samples that amplified twice 
+
+dupesamp <- mTemp %>%
+  count(Sample.Name) %>%
+  filter(n>=2)
+dupesamp
 
 #separates CAM and SYM data based on target to identify thresholds
 cBatch<-mTemp%>%
@@ -85,82 +100,151 @@ NECc<-filter(cBatch,str_detect(Sample.Name, 'NEC'))%>%
     filter(CAM.reps == 2)%>%
     filter(74.344>Tm | Tm>75.384)#Range for CAM target
 
-# Checking how far the NEC with CT's are from the other samples based on target type
-cmean<-mean(cBatch$CAM.CT.mean)
-
-smean<-mean(sBatch$SYM.CT.mean)
-
-NECc<-NECc%>%
-  mutate(checkCAM = CT - cmean)
-NECF<-NECs%>%
-  mutate(checkSYM = CT-smean)%>%
-  full_join(NECc)
-checkk<-NECF%>%
-  filter(checkSYM<8 | checkCAM<8)
-
 mTemp<-mTemp%>%
-  full_join(checkk)#Joins the NECs that had lower than 8 cycle difference 
+  filter(!Tm>75.384 | !88.3<Tm)%>%
+  filter(!Tm<74.344 | !87.2>Tm)# Removes non target temperatures
 
+#finalMtemp<-select(mTemp,Sample.Name,CAM.CT.mean,SYM.CT.mean,SYM.CAM,CAM.CT.mean,SYM.CT.mean,SYM.CAM )
 
 #converts numeric timepoint in master sheet to character in order to combine them across the qpcr data
-master<-master%>%mutate_if(is.numeric,as.character)%>%
-    full_join(acer)
+master2<-master%>%mutate_if(is.numeric,as.character)%>%
+    full_join(mTemp)%>%
+    filter(!str_detect(Sample.Name, 'NEC|pos|neg'))%>%
+    filter(!str_detect(Filename, '1221'))#NEC 7 amplified w/ melt temps, removes this batch
 
-mTemp<-mTemp%>%
-  filter(!Tm<74 & !Tm>89)# Removes non target temperatures
+#needing to know number of samples are good by removing duplicates temporarily
+dupesamp <- mTemp %>%
+  count(Sample.Name) %>%
+  filter(n>=2)
+dupesamp
 
 #select(master,Sample.Name,TimePoint,Cam.CT.mean,Sym.CT.mean,Sym.Cam,Sym.CT.sd,Cam.CT.sd)
-final<-select(master,Sample.Name,TimePoint,CAM.CT.mean,SYM.CT.mean,SYM.CAM,SYM.CT.sd,CAM.CT.sd)
+final<-select(master2,Sample.Name,TimePoint,CAM.CT.mean,SYM.CT.mean,SYM.CAM,SYM.CT.sd,CAM.CT.sd)
 final<-transform(final, TimePoint = as.numeric(TimePoint)) #converts Timpoint which was originally a "character" type to numeric type
 
-master<-master %>%
+master2<-master2 %>%
   mutate(Date = as_date(Date,format = "%m/%e/%y"))
 
 #Histograms separating CAM and SYM targets based on thresholds checked against QuantStudios
 ggplot(cBatch, aes(Tm, fill = str_detect(Sample.Name, pattern ="NEC")))+
   geom_histogram(binwidth = .1)+
   coord_cartesian(xlim = c(72,77))+
-  geom_vline(xintercept= c(74.34,75.45))#threshold for CAM target
+  geom_vline(xintercept= c(74.34,75.409))#threshold for CAM target
   
 ggplot(sBatch, aes(Tm, fill = str_detect(Sample.Name, pattern ="NEC")))+
   geom_histogram (binwidth = .1)+
   coord_cartesian(xlim = c(84.5,90))+
-  geom_vline(xintercept = c(87.2,88.35))#threshold for SYM target
+  geom_vline(xintercept = c(87.2,88.3))#threshold for SYM target
 
 
-#Histograms for Extraction control batches to determine if rerunning is neccesary
-#NEC 9 
-batch<-master%>%
-  filter(File.Name == "Acer_1.12-2.txt")
+#Data separated in batches to determine how many cycles away samples are from NECs that amplified twice
+#columns symchk and camchk reflect differences based on NEC values
 
-batch9<- master%>%
-  filter(File.Name == "Acer_01.18.txt")%>%
-  full_join(batch)
+batch9<-mTemp%>%
+  filter(Filename == "acer_20230118.txt")%>%
+  mutate(cam_chk = 32.430-CAM.CT.mean,sym_chk = 28.70-SYM.CT.mean)%>%
+  filter(!cam_chk<8 & !sym_chk<8)
+
+bb9<-mTemp%>%
+  filter(Filename == "acer_20230118.txt")%>%
+  filter(!str_detect(Sample.Name, 'NEC'))%>%
+  mutate(cam_chk = 32.43 -CAM.CT.mean, sym_chk = 28.7-SYM.CT.mean)%>%
+  filter(cam_chk<8 | sym_chk<8)
+
+#Batch8 filtering the list of redos 
+batch8<-mTemp%>%
+  filter(Filename == "acer_20230111.txt")%>%
+  mutate(cam_chk = 31.79 -CAM.CT.mean, sym_chk = 35.65-SYM.CT.mean)%>%
+  filter(!cam_chk<8 & !sym_chk<8)
+
+bb8<-mTemp%>%
+  filter(Filename == "acer_20230111.txt")%>%
+  filter(!str_detect(Sample.Name, 'NEC'))%>%
+  mutate(cam_chk = 31.79 -CAM.CT.mean, sym_chk = 35.65-SYM.CT.mean)%>%
+  filter(cam_chk<8 | sym_chk<8)
+
+#Batch10 filtering the list of redos 
+#Finds the highest 
+batch10<-mTemp%>%
+  filter(Filename == "acer_20230119.txt")%>%
+  mutate(cam_chk = 31.827 -CAM.CT.mean, sym_chk = 26.762-SYM.CT.mean)%>%
+  filter(!cam_chk<8 & !sym_chk<8)
+
+
+bb10<-mTemp%>%
+  filter(Filename == "acer_20230119.txt")%>%
+  filter(!str_detect(Sample.Name, 'NEC'))%>%
+  mutate(cam_chk = 31.79 -CAM.CT.mean, sym_chk = 35.65-SYM.CT.mean)%>%
+  filter(cam_chk<8 | sym_chk<8)
+
+batch11<-mTemp%>%
+  filter(Filename == "acer_20230215_1.txt")%>%
+  mutate(cam_chk = 31.42 -CAM.CT.mean, sym_chk = 34.883-SYM.CT.mean)%>%
+  filter(!cam_chk<8 & !sym_chk<8)
+
+bb11<-mTemp%>%
+  filter(Filename == "acer_20230215_1.txt")%>%
+  filter(!str_detect(Sample.Name, 'NEC'))%>%
+  mutate(cam_chk = 31.42 -CAM.CT.mean, sym_chk = 34.883-SYM.CT.mean)%>%
+  filter(cam_chk<8 | sym_chk<8)
+
+fbatch<-batch10%>%
+  full_join(batch9)%>%
+  full_join(batch8)
+
+remove(batch10,batch8, batch9,mlt)
+
 
 #histogram for Cam NEC 9 
-ggplot(batch9, aes(x = CAM<.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(fbatch, aes(x = CAM<.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC9")))+
   geom_histogram()+
   scale_x_continuous(breaks = 17:40)
-  
 
 #histogram for Sym NEC9   
-ggplot(batch9, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(fbatch, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC9")))+
   geom_histogram()
 
-#histogram for NEC 8
-batchq<-master%>%
-  filter(File.Name == "Acer_01.12_edit.txt")
-batch8<-master%>%
-  filter(File.Name == "Acer_1.11_edit.txt")%>%
-  full_join(batchq)
-
-ggplot(batch8, aes(x = CAM.CT.mean,fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(fbatch, aes(x = CAM.CT.mean,fill = str_detect(Sample.Name, pattern = "NEC8")))+
   geom_histogram()
-ggplot(batch8, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC")))+
+ggplot(fbatch, aes(x = SYM.CT.mean, fill = str_detect(Sample.Name, pattern = "NEC8")))+
   geom_histogram()
 
-ggplot(master, aes(x = Date, y = log10(SYM.CAM), color = Treatment, group = interaction(Date,Treatment)))+
-  geom_violin()
+
+#filters out melt temperature to (sm)  be combined with timepoint and treatment in master2
+
+sm<-distinct(master2, Sample.Name,Sample.Plate,CT,Target.Name)
+
+master<-master%>%mutate_if(is.numeric,as.character)
+sm<-sm%>%
+  group_by(Target.Name, Sample.Name,Sample.Plate)%>%
+  summarise(Ct.Mean = mean(CT))
+
+final_frame<-full_join(sm,master, by = "Sample.Name")
+
+final_frame<-final_frame%>%pivot_wider(names_from = Target.Name, values_from = Ct.Mean)%>%
+  mutate(SYM.CAM = ((2^(CAM-SYM))*2)/.828)
+
+
+
+q<-final_frame%>%
+  group_by(TimePoint,SYM.CAM)%>%
+  mutate(nlog = log10(SYM.CAM))
+
+
+summary(q$SYM.CAM)
+
+
+p<-ggplot(final_frame, aes(x = Date, y = log10(SYM.CAM), color = Treatment, group = interaction(Date,Treatment)))+
+  geom_boxplot()
+p
+ggplotly(p)
 
 str(master)
+
+count3<-final_frame%>%
+  filter(is.na(Sample.Plate) == TRUE)
+
+
+
+
 
