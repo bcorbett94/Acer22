@@ -1,0 +1,133 @@
+* Block Type = 96-Well 0.2-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 02-23-2023
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 02-23-2023
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 02-23-2023
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 02-23-2023
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 02-23-2023
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 02-23-2023
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 02-23-2023
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 02-23-2023
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 02-23-2023
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 02-23-2023
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 02-23-2023
+* Chemistry = SYBR_GREEN
+* Date Created = 2023-03-08 17:40:30 PM CST
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = C:\Users\bcorbett\OneDrive - Shedd Aquarium Society\Acropora22_proj\EDS files\acer_20230308.eds
+* Experiment Name = Quantification-SYBR_with_Melt
+* Experiment Run End Time = 2023-03-08 16:27:12 PM CST
+* Experiment Type = Standard Curve
+* Instrument Name =       272320406
+* Instrument Serial Number = 272320406
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	HIGHSD	MTP	CQCONF	EXPFAIL	Tm1	Tm2	Tm3	Tm4
+1	A1	false	265	CAM	UNKNOWN	SYBR	None	33.619	33.619									false	0.020	true	3	32	Inconclusive		0.911	N	Y	N	N	76.574	81.289		
+2	A2	false	265	CAM	UNKNOWN	SYBR	None	Undetermined	33.619									false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	63.341			
+3	A3	false	265	SYM	UNKNOWN	SYBR	None	37.532	34.983	3.605								false	0.020	true	3	35	No Amp		0.482	Y	Y	Y	N	86.671	79.963	92.463	76.152
+4	A4	false	265	SYM	UNKNOWN	SYBR	None	32.433	34.983	3.605								false	0.020	true	3	31	Inconclusive		0.936	Y	N	N	N	81.640			
+5	A5	false	288	CAM	UNKNOWN	SYBR	None	23.541	23.487	0.076								false	0.020	true	3	21	Amp		0.520	N	N	Y	N	75.354			
+6	A6	false	288	CAM	UNKNOWN	SYBR	None	23.434	23.487	0.076								false	0.020	true	3	20	Amp		0.580	N	N	Y	N	75.354			
+7	A7	false	288	SYM	UNKNOWN	SYBR	None	21.878	22.450	0.809								false	0.020	true	3	20	Amp		0.495	Y	N	Y	N	87.985			
+8	A8	false	288	SYM	UNKNOWN	SYBR	None	23.022	22.450	0.809								false	0.020	true	3	20	Amp		0.549	Y	N	Y	N	87.985			
+9	A9	false	441	CAM	UNKNOWN	SYBR	None	21.349	21.070	0.396								false	0.020	true	3	19	Amp		0.721	N	N	Y	N	75.400			
+10	A10	false	441	CAM	UNKNOWN	SYBR	None	20.790	21.070	0.396								false	0.020	true	3	18	Amp		0.640	N	N	Y	N	75.400			
+11	A11	false	441	SYM	UNKNOWN	SYBR	None	20.195	20.233	0.054								false	0.020	true	3	18	Amp		0.550	N	N	Y	N	87.846			
+12	A12	false	441	SYM	UNKNOWN	SYBR	None	20.272	20.233	0.054								false	0.020	true	3	19	Amp		0.507	N	N	Y	N	87.694			
+13	B1	false	60	CAM	UNKNOWN	SYBR	None	22.674	22.626	0.068								false	0.020	true	3	21	Amp		0.706	N	N	Y	N	75.205			
+14	B2	false	60	CAM	UNKNOWN	SYBR	None	22.578	22.626	0.068								false	0.020	true	3	21	Amp		0.620	N	N	Y	N	75.357			
+15	B3	false	60	SYM	UNKNOWN	SYBR	None	20.159	20.434	0.389								false	0.020	true	3	18	Amp		0.505	N	N	Y	N	87.890			
+16	B4	false	60	SYM	UNKNOWN	SYBR	None	20.708	20.434	0.389								false	0.020	true	3	18	Amp		0.489	N	N	Y	N	87.890			
+17	B5	false	291	CAM	UNKNOWN	SYBR	None	20.609	19.993	0.872								false	0.020	true	3	19	Amp		0.552	Y	N	Y	N	75.354			
+18	B6	false	291	CAM	UNKNOWN	SYBR	None	19.376	19.993	0.872								false	0.020	true	3	17	Amp		0.550	Y	N	Y	N	75.354			
+19	B7	false	291	SYM	UNKNOWN	SYBR	None	21.648	21.600	0.068								false	0.020	true	3	20	Amp		0.564	N	N	Y	N	87.833			
+20	B8	false	291	SYM	UNKNOWN	SYBR	None	21.552	21.600	0.068								false	0.020	true	3	20	Amp		0.464	N	N	Y	N	87.833			
+21	B9	false	269	CAM	UNKNOWN	SYBR	None	31.883	31.883									false	0.020	true	3	29	Amp		0.918	N	N	N	N	75.095			
+22	B10	false	269	CAM	UNKNOWN	SYBR	None	Undetermined	31.883									false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	59.993			
+23	B11	false	269	SYM	UNKNOWN	SYBR	None	30.720	31.153	0.613								false	0.020	true	3	27	Amp		0.778	Y	Y	Y	N	87.846	82.367		
+24	B12	false	269	SYM	UNKNOWN	SYBR	None	31.587	31.153	0.613								false	0.020	true	3	28	Amp		0.947	Y	Y	N	N	83.280	87.694		
+25	C1	false	161	CAM	UNKNOWN	SYBR	None	31.651	32.709	1.496								false	0.020	true	3	30	Amp		0.939	Y	N	N	N	75.053			
+26	C2	false	161	CAM	UNKNOWN	SYBR	None	33.767	32.709	1.496								false	0.020	true	3	31	Amp		0.872	Y	N	N	N	75.053			
+27	C3	false	161	SYM	UNKNOWN	SYBR	None	25.980	26.199	0.309								false	0.020	true	3	24	Amp		0.568	N	N	Y	N	87.890			
+28	C4	false	161	SYM	UNKNOWN	SYBR	None	26.418	26.199	0.309								false	0.020	true	3	23	Amp		0.537	N	N	Y	N	87.890			
+29	C5	false	321	CAM	UNKNOWN	SYBR	None	24.357	24.351	0.009								false	0.020	true	3	22	Amp		0.674	N	N	Y	N	75.202			
+30	C6	false	321	CAM	UNKNOWN	SYBR	None	24.344	24.351	0.009								false	0.020	true	3	22	Amp		0.624	N	N	Y	N	75.354			
+31	C7	false	321	SYM	UNKNOWN	SYBR	None	22.086	21.110	1.380								false	0.020	true	3	20	Amp		0.505	Y	N	Y	N	87.833			
+32	C8	false	321	SYM	UNKNOWN	SYBR	None	20.134	21.110	1.380								false	0.020	true	3	18	Amp		0.528	Y	N	Y	N	87.833			
+33	C9	false	NEC 12	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	60.909			
+34	C10	false	NEC 12	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	61.671			
+35	C11	false	NEC 12	SYM	UNKNOWN	SYBR	None	31.340	30.421	1.300								false	0.020	true	3	29	Amp		0.938	Y	Y	N	N	87.846	80.236		
+36	C12	false	NEC 12	SYM	UNKNOWN	SYBR	None	29.501	30.421	1.300								false	0.020	true	3	27	Amp		0.704	Y	N	Y	N	80.997			
+37	D1	false	342	CAM	UNKNOWN	SYBR	None	21.479	21.805	0.461								false	0.020	true	3	20	Amp		0.604	N	N	Y	N	75.357			
+38	D2	false	342	CAM	UNKNOWN	SYBR	None	22.131	21.805	0.461								false	0.020	true	3	20	Amp		0.560	N	N	Y	N	75.357			
+39	D3	false	342	SYM	UNKNOWN	SYBR	None	18.716	19.151	0.616								false	0.020	true	3	16	Amp		0.443	Y	N	Y	N	87.890			
+40	D4	false	342	SYM	UNKNOWN	SYBR	None	19.586	19.151	0.616								false	0.020	true	3	18	Amp		0.552	Y	N	Y	N	87.890			
+41	D5	false	410	CAM	UNKNOWN	SYBR	None	20.514	20.158	0.503								false	0.020	true	3	19	Amp		0.674	Y	N	Y	N	75.354			
+42	D6	false	410	CAM	UNKNOWN	SYBR	None	19.803	20.158	0.503								false	0.020	true	3	18	Amp		0.558	Y	N	Y	N	75.354			
+43	D7	false	410	SYM	UNKNOWN	SYBR	None	19.264	19.709	0.629								false	0.020	true	3	17	Amp		0.578	Y	N	Y	N	87.681			
+44	D8	false	410	SYM	UNKNOWN	SYBR	None	20.154	19.709	0.629								false	0.020	true	3	17	Amp		0.499	Y	N	Y	N	87.681			
+45	D9	false	NEC13	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	59.993			
+46	D10	false	NEC13	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	63.349			
+47	D11	false	NEC13	SYM	UNKNOWN	SYBR	None	34.117	34.939	1.162								false	0.020	true	3	32	Inconclusive		0.883	Y	N	N	N	78.410			
+48	D12	false	NEC13	SYM	UNKNOWN	SYBR	None	35.760	34.939	1.162								false	0.020	true	3	33	Inconclusive		0.745	Y	Y	Y	N	79.932	83.280		
+49	E1	false	358	CAM	UNKNOWN	SYBR	None	24.846	25.206	0.508								false	0.020	true	3	22	Amp		0.650	Y	N	Y	N	75.205			
+50	E2	false	358	CAM	UNKNOWN	SYBR	None	25.565	25.206	0.508								false	0.020	true	3	23	Amp		0.714	Y	N	Y	N	75.357			
+51	E3	false	358	SYM	UNKNOWN	SYBR	None	22.452	22.165	0.407								false	0.020	true	3	20	Amp		0.521	N	N	Y	N	87.890			
+52	E4	false	358	SYM	UNKNOWN	SYBR	None	21.877	22.165	0.407								false	0.020	true	3	19	Amp		0.481	N	N	Y	N	87.890			
+53	E5	false	375	CAM	UNKNOWN	SYBR	None	33.079	32.151	1.313								false	0.020	true	3	31	Amp		0.900	Y	N	N	N	75.050			
+54	E6	false	375	CAM	UNKNOWN	SYBR	None	31.222	32.151	1.313								false	0.020	true	3	29	Amp		0.932	Y	N	N	N	75.050			
+55	E7	false	375	SYM	UNKNOWN	SYBR	None	21.901	22.326	0.602								false	0.020	true	3	20	Amp		0.588	Y	N	Y	N	87.833			
+56	E8	false	375	SYM	UNKNOWN	SYBR	None	22.752	22.326	0.602								false	0.020	true	3	21	Amp		0.552	Y	N	Y	N	87.681			
+57	E9	false	pos	CAM	UNKNOWN	SYBR	None	27.870	28.206	0.475								false	0.020	true	3	26	Amp		0.824	N	N	N	N	75.095			
+58	E10	false	pos	CAM	UNKNOWN	SYBR	None	28.541	28.206	0.475								false	0.020	true	3	27	Amp		0.825	N	N	N	N	75.095			
+59	E11	false	pos	SYM	UNKNOWN	SYBR	None	25.414	24.996	0.591								false	0.020	true	3	23	Amp		0.494	Y	N	Y	N	87.541			
+60	E12	false	pos	SYM	UNKNOWN	SYBR	None	24.578	24.996	0.591								false	0.020	true	3	22	Amp		0.452	Y	N	Y	N	87.541			
+61	F1	false	277	CAM	UNKNOWN	SYBR	None	23.165	23.879	1.010								false	0.020	true	3	21	Amp		0.416	Y	N	Y	N	75.205			
+62	F2	false	277	CAM	UNKNOWN	SYBR	None	24.593	23.879	1.010								false	0.020	true	3	22	Amp		0.653	Y	N	Y	N	75.205			
+63	F3	false	277	SYM	UNKNOWN	SYBR	None	21.126	21.710	0.826								false	0.020	true	3	19	Amp		0.480	Y	N	Y	N	87.738			
+64	F4	false	277	SYM	UNKNOWN	SYBR	None	22.295	21.710	0.826								false	0.020	true	3	20	Amp		0.502	Y	N	Y	N	87.738			
+65	F5	false	437	CAM	UNKNOWN	SYBR	None	19.727	19.743	0.022								false	0.020	true	3	18	Amp		0.645	N	N	Y	N	75.506			
+66	F6	false	437	CAM	UNKNOWN	SYBR	None	19.758	19.743	0.022								false	0.020	true	3	18	Amp		0.627	N	N	Y	N	75.506			
+67	F7	false	437	SYM	UNKNOWN	SYBR	None	21.872	21.152	1.018								false	0.020	true	3	20	Amp		0.450	Y	N	Y	N	87.681			
+68	F8	false	437	SYM	UNKNOWN	SYBR	None	20.433	21.152	1.018								false	0.020	true	3	18	Amp		0.508	Y	N	Y	N	87.681			
+69	F9	false	neg	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	62.282			
+70	F10	false	neg	CAM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	62.129			
+71	F11	false	neg	SYM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	59.995			
+72	F12	false	neg	SYM	UNKNOWN	SYBR	None	Undetermined										false	0.020	true	3	39	No Amp		0.000	N	N	Y	Y	59.995			
+73	G1	false	284	CAM	UNKNOWN	SYBR	None	21.177	21.399	0.314								false	0.020	true	3	19	Amp		0.651	N	N	Y	N	75.205			
+74	G2	false	284	CAM	UNKNOWN	SYBR	None	21.621	21.399	0.314								false	0.020	true	3	20	Amp		0.565	N	N	Y	N	75.205			
+75	G3	false	284	SYM	UNKNOWN	SYBR	None	21.182	21.185	0.004								false	0.020	true	3	19	Amp		0.412	N	N	Y	N	87.738			
+76	G4	false	284	SYM	UNKNOWN	SYBR	None	21.187	21.185	0.004								false	0.020	true	3	19	Amp		0.505	N	N	Y	N	87.738			
+77	G5	false	438	CAM	UNKNOWN	SYBR	None	19.280	19.029	0.355								false	0.020	true	3	17	Amp		0.657	N	N	Y	N	75.354			
+78	G6	false	438	CAM	UNKNOWN	SYBR	None	18.778	19.029	0.355								false	0.020	true	3	15	Amp		0.479	N	N	Y	N	75.354			
+79	G7	false	438	SYM	UNKNOWN	SYBR	None	20.526	20.560	0.047								false	0.020	true	3	18	Amp		0.483	N	N	Y	N	87.833			
+80	G8	false	438	SYM	UNKNOWN	SYBR	None	20.593	20.560	0.047								false	0.020	true	3	18	Amp		0.506	N	N	Y	N	87.833			
+85	H1	false	285	CAM	UNKNOWN	SYBR	None	21.844	21.721	0.174								false	0.020	true	3	20	Amp		0.556	N	N	Y	N	75.205			
+86	H2	false	285	CAM	UNKNOWN	SYBR	None	21.598	21.721	0.174								false	0.020	true	3	19	Amp		0.640	N	N	Y	N	75.205			
+87	H3	false	285	SYM	UNKNOWN	SYBR	None	21.324	21.686	0.512								false	0.020	true	3	18	Amp		0.424	Y	N	Y	N	87.738			
+88	H4	false	285	SYM	UNKNOWN	SYBR	None	22.047	21.686	0.512								false	0.020	true	3	20	Amp		0.519	Y	N	Y	N	87.890			
+89	H5	false	439	CAM	UNKNOWN	SYBR	None	16.432	16.417	0.021								false	0.020	true	3	14	Amp		0.700	N	N	Y	N	75.354			
+90	H6	false	439	CAM	UNKNOWN	SYBR	None	16.402	16.417	0.021								false	0.020	true	3	15	Amp		0.672	N	N	Y	N	75.354			
+91	H7	false	439	SYM	UNKNOWN	SYBR	None	19.132	19.241	0.153								false	0.020	true	3	17	Amp		0.556	N	N	Y	N	87.833			
+92	H8	false	439	SYM	UNKNOWN	SYBR	None	19.349	19.241	0.153								false	0.020	true	3	17	Amp		0.610	N	N	Y	N	87.833			
