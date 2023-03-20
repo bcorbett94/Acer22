@@ -17,3 +17,5 @@ qpcr <- df$result
 ampboth<-filter(qpcr,C.reps ==2 & D.reps ==2)
 
 ampone<-filter(qpcr,C.reps ==2 | D.reps ==2)
+
+write.csv(qpcr,file ='/Users/brycecorbett/Desktop/Shedd_Aquarium/Projects/Acropora22/sm_data.csv')

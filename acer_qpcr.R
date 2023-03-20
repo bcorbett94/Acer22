@@ -6,6 +6,7 @@ library(plotly)
 library(data.table)
 library(ggplot2)
 library(lubridate)
+library(broom)
 #importing qPCR data with CT values
 p2 <- list.files(path = "qPCR", pattern = ".txt", full.names = TRUE)
 p2
@@ -225,18 +226,90 @@ final_frame<-final_frame%>%pivot_wider(names_from = Target.Name, values_from = C
   mutate(SYM.CAM = ((2^(CAM-SYM))*2)/.828)
 
 
-
 q<-final_frame%>%
   group_by(TimePoint,SYM.CAM)%>%
-  mutate(nlog = log10(SYM.CAM))
+  mutate(nlog = log10(SYM.CAM))%>%
+  mutate(Date = as_date(Date,format = "%m/%e/%y"))
 
+
+datstat<-lm(log10(SYM.CAM)~Treatment+Genotype+TimePoint,data = q)
+
+hist(datstat$residuals)
+datstat2<-augment(datstat)
+
+hist(datstat2$.std.resid)
+# filtered out residuals that were too high 
+ds3<-datstat2%>%filter(.std.resid<2, .std.resid>-4)
+datstat2
+
+#average ratio of Control fragments Timpoint 1 
+tq<-q%>%
+  filter(Treatment !="Heated" )%>%
+  filter(TimePoint == 1)%>%
+  group_by(Genotype)%>%
+  summarise(ctrlavg = mean(nlog))%>%
+  mutate(stdDev1 = sd(ctrlavg))#%>%
+  #select(Genotype,ctrlavg,TimePoint)
+
+
+#average of heated coral fragments Timepoint 1
+tk<-q%>%
+  filter(TimePoint == 1)%>%
+  filter(Treatment != "Control")%>%
+  group_by(Genotype)%>%
+  summarise(heatedavg = mean(nlog))%>%
+  mutate(stdDev2 = sd(heatedavg))
+#averages after Tpoint 1 
+ts<-q%>%
+  filter(TimePoint != 1)%>%
+  filter(Treatment != "Control")%>%
+  group_by(Genotype)%>%
+  summarise(recavg = mean(nlog,na.rm = TRUE))%>%
+  mutate(stdDev3 = sd(recavg))
+#%>%
+  #select(Genotype,nonctrl,TimePoint)
+
+#tp<-select(tk,Genotype,heatedavg)
+  
+testing<-tq%>%
+  full_join(ts)%>%
+  full_join(tk)
+
+bsus<-testing%>%
+  mutate(symDecline = (1-(heatedavg/ctrlavg))*100)
+
+bsus_long<-bsus%>%full_join(ts)%>%
+  mutate(rec = recavg/heatedavg)%>%
+  pivot_longer(cols = c(ctrlavg, recavg,heatedavg), names_to = "AverageType", values_to = "S.H")
+
+
+
+#ggplot(bsus, aes(x = TimePoint, y = , color = Genotype))+
+  #geom_point()
+recovery+facet_wrap(~Genotype)
+
+p<-ggplot(bsus_long, aes(x = AverageType , y = S.H, group = Genotype, color = Genotype))+
+  geom_line()+
+  geom_point()
+  
+  
+p+facet_wrap(.~Genotype)
+p
+
+#add standard deviations
 
 summary(q$SYM.CAM)
 
 
-p<-ggplot(final_frame, aes(x = Date, y = log10(SYM.CAM), color = Treatment, group = interaction(Date,Treatment)))+
+p<-ggplot(ds3, aes(x = TimePoint, y = `log10(SYM.CAM)`, color = Treatment))+
   geom_boxplot()
 p
+
+p+facet_wrap(~Genotype)
+
+ds3%>% group_by(Genotype)%>%
+  filter(TimePoint == 1)
+
 ggplotly(p)
 
 str(master)
